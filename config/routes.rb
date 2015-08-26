@@ -1,8 +1,13 @@
+require 'api_constraints'
 Rails.application.routes.draw do
   #API definition
   namespace :api, defaults: { format: :json }, 
                             # Set api under subdomain
                               constraints: { subdomain: 'api' }, path: '/' do 
-    #List resources here
+    #API versioning, app/controllers/api/v1
+    #example: http://api.marketplace.dev/v1/products/1
+    scope module: :v1, constraints: ApiConstraints.new(version: 1, default: true) do 
+    end 
+
   end 
 end
