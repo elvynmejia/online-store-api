@@ -1,10 +1,6 @@
 require 'spec_helper'
 
 describe Api::V1::UsersController do
-	before(:each) { 
-		request.headers['Accept'] = "application/vnd.onlinestore.v1, #{Mime::JSON}" }
-
-	before(:each) { request.headers['Content-Type'] = Mime::JSON.to_s }
 
 	describe "GET #show" do 
 		before(:each) do 
