@@ -1,3 +1,3 @@
 RESTful API online store where users shall be able to place orders, upload products, manage products and more. 
 This RESTful API is built using the best practices e.g. test driven development and endpoints testing.
-I utilize JSON response format. 
+I utilize JSON response format.
