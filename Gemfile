@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.2.3'
-gem 'sass-rails', '~> 4.0.0'
+gem 'sass-rails', '~> 4.0.2'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 # gem 'therubyracer', platforms: :ruby
@@ -25,3 +25,9 @@ group :test do
 end 
 
 gem 'devise'
+#To test API endpoints
+gem 'sabisu_rails', github: "IcaliaLabs/sabisu-rails"
+gem 'compass-rails', '~> 2.0.0'
+gem 'furatto', '~> 1.3.7'
+gem 'font-awesome-rails'
+gem 'simple_form'
