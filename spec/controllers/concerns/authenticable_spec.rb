@@ -21,7 +21,8 @@ describe Authenticable do
 	 	end
 	end
 
-	describe "#authenticate_with_token" do
+	describe "#authenticate_with_token!" do
+
 	  before do
 	    @user = FactoryGirl.create :user
 	    allow(authentication).to receive(:current_user).and_return(nil)
