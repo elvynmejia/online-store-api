@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe User do
 	before { @user = FactoryGirl.build(:user) }
-
 	subject { @user }
+
 	it { should respond_to(:auth_token) }
 	it { should respond_to(:email) }
 	it { should respond_to(:password) }
@@ -18,6 +18,8 @@ describe User do
 
 	it { should validate_uniqueness_of(:auth_token) }
 
+	it { should have_many(:products)}
+
 	describe "#generate_authentication_token!" do
 		it "generates a unique token" do
 			#Devise.stub(:friendly_token).and_return("auniquetoken123")
@@ -31,5 +33,20 @@ describe User do
 			@user.generate_authentication_token!
 			expect(@user.auth_token).not_to eql existing_user.auth_token
 		end
+	end
+
+	describe "#products association" do
+		before do 
+			@user.save
+			3.times { FactoryGirl.create :product, user: @user }
+	  	end 
+
+	  	it "destroys the associated products of self destruct" do
+	  		products = @user.products
+	  		@user.destroy
+	  		products.each do |product| 
+	  			expect(Product.find(product)).to raise_error ActiveRecord::RecordNotFound
+	  		end 
+	  	end
 	end
 end
